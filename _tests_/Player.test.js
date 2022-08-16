@@ -66,6 +66,39 @@ test("subtracts from players's health",()=>{
 
 });
 
+// writing test for player's attack
+test("gets  player's attack value",()=>{
+
+  const player = new Player('Dave');
+  player.strength =10;
+
+  expect(player.getAttackValue()).toBeGreaterThanOrEqual(5);
+  expect(player.getAttackValue()).toBeLessThanOrEqual(15);
+  
+});
+
+// writing a test to check potion was added correctly
+test('add a potion to the inventory',()=>{
+  const player =new Player('Dave');
+  const oldCount = player.inventory.length;
+
+  player.addPotion(new Potion());
+
+  expect(player.inventory.length).toBeGreaterThan(oldCount);
+});
+
+// writing test to ensure rite potion is removed
+
+test('use a potion from inventory',()=>{
+  const player = new Player('dave');
+  player.inventory = [new Potion(),new Potion(),new Potion()];
+  const oldCount = player.inventory.length;
+
+  player.usePotion(1);
+  expect(player.inventory.length).toBeLessThan(oldCount);
+
+});
+
 
 
 
